@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JS intro fx sumando</title>
+    <style>
+      body {
+        font-family: Arial, Helvetica, sans-serif;
+        margin: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-color: whitesmoke;
+      }
+
+      .container {
+        background-color: white;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+        width: 300px;
+      }
+
+      h1,
+      h2 {
+        color: #333;
+      }
+
+      input {
+        margin-top: 10px;
+        padding: 8px;
+        /*ajusta el ancho de un elemento/ Restamos 16px del 100% del ancho porque cada <input> tiene padding: 8px, y dado que hay 8px de padding a cada lado (izquierdo y derecho), eso suma un total de 16px. */
+        width: calc(100% - 16px);
+        border: 1px solid #ccc;
+        border-radius: 4px;
+      }
+
+      button {
+        margin-top: 10px;
+        padding: 10px;
+        width: 100%;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+
+      button:hover {
+        background-color: #0056b3;
+      }
+
+      #sumando {
+        margin-top: 15px;
+        font-weight: bold;
+        color: #333;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Intro JS - Fx</h1>
+      <h2>Suma de dos números</h2>
+      <p>Introduce dos números</p>
+      <input id="num1" /> <br />
+      <input id="num2" />
+      <button type="button" onclick="myFunction()">Sumar</button>
+      <p id="sumando"></p>
+    </div>
+
+    <script>
+      function myFunction() {
+        var x, y, suma, text;
+        /* DEFINICION Y ROL DE VARIABLES 
+        x y y: GuardaN los valores de los números que ingrese el usuario.
+        suma: Almacena el resultado de sumar los valores de x e y.
+        text: Guardará el mensaje que mostraremos en pantalla, ya sea el resultado de la suma o un mensaje de error si la entrada no es válida.
+        */
+
+        x = document.getElementById("num1").value;
+        /* Usamos document.getElementById("num1") para seleccionar el elemento HTML con el id de num1 
+        (el primer campo de entrada de número).
+        Luego, accedemos a la propiedad .value para obtener el 
+        valor ingresado en el campo de texto y asignarlo a la variable x.
+        */
+        y = document.getElementById("num2").value;
+        /*Similar a la línea anterior, seleccionamos el elemento con id num2
+        (el segundo campo de entrada de número)
+        y obtenemos su valor, asignándolo a y.
+        */
+
+        //CONDICIONAL IF ELSE si no es n > mensaje error
+        //Si es n, suma.
+
+        if (isNaN(x) || isNaN(y)) {
+          text = "Es necesario introducir dos números válidos";
+        } else {
+          suma = parseFloat(x) + parseFloat(y);
+          /*
+          Aquí realizamos la suma de x y y. 
+          Antes, usamos parseFloat en cada valor para convertirlos
+          de cadenas de texto a números decimales
+          */
+          text = suma;
+          /*
+          Asignamos el resultado de la suma a la variable 
+          text, que se usará para mostrar el resultado en la página.
+          */
+        }
+
+        document.getElementById("sumando").innerHTML = text;
+        /*
+        Seleccionamos el elemento con id sumando (un párrafo <p> 
+        en el HTML) y usamos .innerHTML para actualizar su
+        contenido, mostrando el valor de text 
+        (ya sea el resultado de la suma o el mensaje de error)
+        en la pantalla.
+        */
+      }
+    </script>
+  </body>
+</html>
